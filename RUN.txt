@@ -1,0 +1,18 @@
+1. Cắt ảnh --> Đưa vào processed
+
+python src/align_dataset_mtcnn.py  Dataset/FaceData/raw Dataset/FaceData/processed --image_size 160 --margin 32  --random_order --gpu_memory_fraction 0.25
+
+###############
+
+2. Train model
+
+python src/classifier.py TRAIN Dataset/FaceData/processed Models/20180402-114759.pb Models/facemodel.pkl --batch_size 1000
+
+###############
+
+3.1 Run camera
+python src/face_rec_cam.py 
+
+3.2 Run video
+
+python src/face_rec.py --path video/haoquangrucro.mp4
